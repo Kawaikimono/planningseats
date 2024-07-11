@@ -1,0 +1,102 @@
+/* #start {
+    font-family: 'Corinthia', cursive;
+    font-size: 130px;
+    text-align: center;
+    padding-top: 15%;
+}
+
+#title {
+    font-family: 'Corinthia', cursive;
+    font-size: 120px;
+    text-align: center;
+    padding-top: 1%;
+}
+
+* {
+    font-family: 'Josefin Slab', serif;
+}
+
+#link {
+    text-align: center;
+}
+
+label {
+    font-size: large;
+    margin-top: 3%;
+    font-weight: bold;
+}
+
+hr {
+    width: 80%;
+    margin: auto;
+    height: 2px;
+}
+
+#form {
+    display: inline-block;
+    background-color: #D0FFD6;
+    min-width: 25%;
+    margin: auto;
+    padding: 30px;
+}
+
+.hover:hover {
+    background-color: #C7B8EA;
+}
+.hover {
+    font-weight: bolder;
+}
+
+#sorry {
+    border-radius: 8px;
+    max-width: 60%;
+    height: auto;
+}
+
+#space {
+    margin-top: 2%;
+}
+
+#error {
+    display: inline-block;
+    background-color: #62EAF9;
+    min-width: 45%;
+    margin: auto;
+    margin-top: 4.5%;
+    padding: 30px;
+}
+button {
+    font-style: bold;
+    margin-top: 7%;
+    margin-bottom: 5%;
+}
+/* Option fonts */
+/* font-family: 'Josefin Slab', serif;
+font-family: 'Quicksand', sans-serif; */
+/* font-family: 'Sacramento', cursive; */
+/* 
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 3px;
+    background: #e52d27;  /* fallback for old browsers */
+    /* background: -webkit-linear-gradient(to right, #b31217, #e52d27);  /* Chrome 10-25, Safari 5.1-6 */
+
+
+/* li.drag-sort-active {
+    background: transparent;
+    color: transparent;
+    border: 1px solid #4ca1af;
+}
+
+span.drag-sort-active {
+    background: transparent;
+    color: transparent;
+}  */

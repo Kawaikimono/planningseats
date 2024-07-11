@@ -1,0 +1,315 @@
+@import url("https://fonts.googleapis.com/css2?family=Corinthia:wght@700&family=Josefin+Slab:wght@300&family=Quicksand:wght@300&family=Sacramento&display=swap");
+
+/* Option fonts
+LOGO - font-family: 'Corinthia', cursive;
+POLITE BLOCK W/ ACCENTS - font-family: 'Josefin Slab', serif;
+POLITE BLOCK - font-family: 'Quicksand', sans-serif;
+CURSIVE - font-family: 'Sacramento', cursive; 
+*/
+
+/* Colors
+BLUE: #6DAADE;
+PURPLE: #C7B8EA;
+*WHITE: #F7F7F9
+GRAY/GREEN:#F0F7F4; 
+DRK GREEN: #C0DDD0
+*/
+
+#title {
+  font-family: "Corinthia", cursive;
+  font-size: 120px;
+  text-align: center;
+  padding-top: 1%;
+}
+
+.center {
+  text-align: center;
+}
+
+.hide {
+  opacity:0;
+  display: inline-flex;
+}
+
+.hide2{
+  display: none;
+}
+
+.tableHeader:hover > .hide {
+  opacity:1;
+}
+
+h2.spaceabove:hover > .hide2 {
+  display:inline-block;
+}
+
+h5:hover > .hide{
+  opacity: 1;
+}
+
+#noted{
+  display: "none";
+}
+
+@media (max-width: 700px) {
+  #title {
+    font-size: 75px;
+  }
+  form.boxSeatTables {
+    max-width: none;
+    min-width: 70%;
+    font-family: 'Quicksand', sans-serif;
+  }
+  form.singleNameCard {
+    min-width: 80%;
+    margin-top: 2.5%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #c0ddd0;
+  }
+}
+
+.fancy{
+font-weight:900;
+}
+
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+*/ #link {
+  text-align: center;
+}
+
+label {
+  font-size: large;
+  margin-top: 3%;
+  font-weight: bold;
+}
+
+.underline {
+  width: 80%;
+  margin: auto;
+  height: 2px;
+}
+
+#form {
+  display: inline-block;
+  background-color: #f0f7f4;
+  min-width: 25%;
+  margin: auto;
+  padding: 30px;
+}
+
+.btns:hover {
+  background-color: #c7b8ea;
+}
+
+.btns {
+  font-weight: bolder;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+
+#sorry {
+  border-radius: 8px;
+  max-width: 60%;
+  height: auto;
+}
+
+#space {
+  margin-top: 2%;
+}
+
+#error {
+  display: inline-block;
+  background-color: #62eaf9;
+  min-width: 45%;
+  margin: auto;
+  margin-top: 4.5%;
+  padding: 30px;
+}
+
+button {
+  font-style: bold;
+  margin-top: 7%;
+  margin-bottom: 5%;
+}
+
+ul {
+  margin: 0;
+  margin-bottom: 0% !important;
+  padding: 0;
+}
+
+.centerWelcome {
+  width: 70%;
+  margin: auto;
+}
+
+.boxWelcome {
+  background-color: #f0f7f4;
+  padding: 40px;
+}
+
+.btnWelcome {
+  margin-left: 4px;
+}
+
+.boxSeatTables {
+  background-color: #f0f7f4;
+  min-width: 25%;
+  max-width: 30%;
+  margin: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.boxSeatTables2 {
+  background-color: #e3daf8;
+  min-width: 25%;
+  max-width: 85%;
+  margin: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+input:focus {
+  outline: none !important;
+  border: 2px solid #6daade;
+  border-radius: 4px;
+}
+
+.spaceabove{
+  padding-top: 20px;
+  margin-bottom: 0px;
+}
+
+.tablesUpDown {
+  width: 45%;
+}
+
+.displayTables {
+  border-radius: 4px;
+  padding: 15px 15px 20px 15px;
+  border: 4px dashed #d8c9f9;
+  margin-bottom: 2%;
+}
+
+.displaySeatingTables {
+  width: 45%;
+  border-radius: 4px;
+  padding: 15px 15px 20px 15px;
+  border: 4px dashed #d8c9f9;
+}
+
+.dragtable {
+  background-color: ghostwhite;
+  border: 4px dashed #d8c9f9;
+  border-radius: 4px;
+}
+
+.container {
+  display: flex;
+  width: 95%;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.tableHeader {
+  font-size: 35px;
+  font-weight: bolder;
+  font-family: "Josefin Slab", serif;
+}
+
+.tablenote{
+  background-color: rgb(234, 232, 232);
+  padding: 10px;
+}
+
+.singleNameCard {
+  display: flex;
+  padding: 0.5%;
+  margin-top: 2%;
+  background-color: #f0f7f4;
+  text-align: center;
+  width: 80%;
+  border-radius: 2px;
+  border: 1px dashed black;
+  margin-left: auto;
+  margin-right: auto;
+  transition: 0.2s;
+}
+
+.singleNameCard:hover {
+  box-shadow: 2 2 5px gray;
+  transform: scale(1.03);
+}
+
+.singleNameCard:active {
+  background-color: #c0ddd0;
+  box-shadow: 0 0 15px gray;
+  opacity: 0.75;
+}
+
+.clippy:active{
+  background-color: #c0ddd0;
+}
+
+.singleNameCardText {
+  flex: 1;
+  padding: 5px;
+  font-size: x-large;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Option fonts
+LOGO - font-family: 'Corinthia', cursive;
+POLITE BLOCK W/ ACCENTS - font-family: 'Josefin Slab', serif;
+POLITE BLOCK - font-family: 'Quicksand', sans-serif;
+CURSIVE - font-family: 'Sacramento', cursive; 
+*/
+
+.icon {
+  margin-left: 1px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.icon2 {
+  margin-left: 15px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.icon3{
+  cursor: pointer;
+  padding-left: 3px;
+}
+
+.icon4 {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.icon5 {
+  font-size: 25px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.icon6{
+  cursor: pointer;
+  padding-left: 7px;
+  margin-top: 6px;
+}
+
+#longer{
+  width: 500px;
+}
+

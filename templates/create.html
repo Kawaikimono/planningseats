@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+
+<h2></h2><br>
+  <form id="form" action="/create" method="post">
+    <label for="tables">How many tables?</label><br>
+    <input required type="text" id="tables" name="tables"> <br>
+    <input type="submit" class="hover" id="subseat" value="Let's get started">
+  </form>
+{% endblock %}
