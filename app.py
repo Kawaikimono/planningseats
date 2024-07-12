@@ -1,6 +1,6 @@
 import os
 from helpers import apology
-from flask import Flask, flash, redirect, render_template, request, g
+from flask import Flask, abort, request, g
 import sqlite3
 
 # Configure application
@@ -52,6 +52,10 @@ def patch_event(event_id):
 
     """
     cursor=g.db.cursor()
+    try:
+        _=int(event_id)
+    except ValueError:
+        abort(400)
     if request.method == "PATCH":
         set_strings = []
         set_values = []
@@ -67,8 +71,10 @@ def patch_event(event_id):
         set_values.append(event_id)
         cursor.execute(sql,set_values)
         g.db.commit()
-    cursor.execute("SELECT title, note FROM events WHERE id=?", (event_id))
+    cursor.execute("SELECT title, note FROM events WHERE id=?", (event_id,))
     res=cursor.fetchall()
+    if len(res) == 0:
+        abort(404)
     updated_event_id=res[0]
     return {"title":updated_event_id[0],"note":updated_event_id[1]}
 
@@ -106,7 +112,7 @@ def guests(event_id):
 
     else:
         sql="SELECT guest_name, table_id, id FROM guests WHERE event_id = ?"
-        cursor.execute(sql, (event_id))
+        cursor.execute(sql, (event_id,))
         res=cursor.fetchall()
         guests = [{"guest_name": row[0], "table_id": row[1], "id": row[2]} for row in res]
         return {"guests":guests}
@@ -185,31 +191,33 @@ def tables(event_id):
         sql=f"INSERT INTO tables (event_id, table_number) VALUES {', '.join(insert_strings)}"
         cursor.execute(sql,insert_data)
         g.db.commit()
-        cursor.execute("SELECT id, table_number FROM tables WHERE event_id = ?", (event_id))
+        cursor.execute("SELECT id, table_number FROM tables WHERE event_id = ?", (event_id,))
         res=cursor.fetchall()
         tables = [{"table_id": row[0], "table_number": row[1], "note": ""} for row in res]
         return {"tables":tables}
     elif request.method == "GET":
         sql="SELECT id, table_number, note FROM tables WHERE event_id = ?"
-        cursor.execute(sql, (event_id))
+        cursor.execute(sql, (event_id,))
         res=cursor.fetchall()
         tables = [{"id": row[0], "table_number": row[1], "note": row[2] if row[2] is not None else""} for row in res]
         return {"tables":tables}
     elif request.method == "PATCH":
         sql="SELECT max(table_number) FROM tables WHERE event_id = ?"
-        cursor.execute(sql, (event_id))
+        cursor.execute(sql, (event_id,))
         res=cursor.fetchall()
-        new_table_number=res[0][0]+1
+        new_table_number = 1
+        if res[0][0] is not None:
+            new_table_number=res[0][0]+1
         sql="INSERT INTO tables (event_id, table_number) VALUES (?,?)"
         cursor.execute(sql,(event_id,new_table_number))
         g.db.commit()
-        cursor.execute("SELECT id, max(table_number) FROM tables WHERE event_id = ?", (event_id))
+        cursor.execute("SELECT id, max(table_number) FROM tables WHERE event_id = ?", (event_id,))
         row=cursor.fetchall()[0]
         tables = {"table_id": row[0], "table_number": row[1], "note": None}
         return tables
     else: #DELETE case
         sql="SELECT id, max(table_number) FROM tables WHERE event_id = ?"
-        cursor.execute(sql, (event_id))
+        cursor.execute(sql, (event_id,))
         res=cursor.fetchall()
         table_id=res[0][0]
         print(table_id)

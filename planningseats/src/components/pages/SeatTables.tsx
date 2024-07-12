@@ -26,7 +26,6 @@ const handleAdd = (e:any) =>{
 }).then((data)=>{
     return data.json()
 }).then((data)=>{
-    console.log(data)
     let oldNamesList=namesList
     oldNamesList[0] = [...namesList[0], { id: data.guest_id, name: data.guest_name, table_id: -1}]
     setNamesList(oldNamesList);

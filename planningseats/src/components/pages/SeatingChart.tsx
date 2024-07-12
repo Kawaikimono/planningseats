@@ -6,6 +6,9 @@ const SeatingChart = () => {
   const onTableCreate = (e: any) =>{
     e.preventDefault()
     const numTables = parseInt(e.target.table.value)
+    if (Number.isNaN(numTables)){
+      return
+    }
     fetch(`/api/events/${id}/tables`, {
       method:"POST",
       headers: {

@@ -22,6 +22,10 @@ DRK GREEN: #C0DDD0
   padding-top: 1%;
 }
 
+html {
+  scroll-behavior: auto;
+}
+
 .center {
   text-align: center;
 }
@@ -31,16 +35,12 @@ DRK GREEN: #C0DDD0
   display: inline-flex;
 }
 
-.hide2{
-  display: none;
-}
-
 .tableHeader:hover > .hide {
   opacity:1;
 }
 
-h2.spaceabove:hover > .hide2 {
-  display:inline-block;
+h4:hover > .hide{
+  opacity: 1;
 }
 
 h5:hover > .hide{
@@ -52,8 +52,17 @@ h5:hover > .hide{
 }
 
 @media (max-width: 700px) {
+  .phone{
+    flex-direction: column;
+  }
   #title {
     font-size: 75px;
+  }
+  .displaySeatingTables{
+    min-width: 100%;
+  }
+  .tablesUpDown{
+    min-width: 100%;
   }
   form.boxSeatTables {
     max-width: none;
@@ -71,6 +80,16 @@ h5:hover > .hide{
 
 .fancy{
 font-weight:900;
+}
+
+.fancy2{
+  max-width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+.fancy2:hover{
+  color: #9589b3;
 }
 
 * {
@@ -120,12 +139,11 @@ label {
   margin-top: 2%;
 }
 
-#error {
+.error {
   display: inline-block;
   background-color: #62eaf9;
   min-width: 45%;
   margin: auto;
-  margin-top: 4.5%;
   padding: 30px;
 }
 
@@ -229,6 +247,7 @@ input:focus {
 .tablenote{
   background-color: rgb(234, 232, 232);
   padding: 10px;
+  display: flex;
 }
 
 .singleNameCard {
@@ -265,6 +284,18 @@ input:focus {
   padding: 5px;
   font-size: x-large;
   font-family: 'Quicksand', sans-serif;
+}
+
+#width{
+  width: 95%;
+}
+
+.width{
+  width: 95%;
+}
+
+.width3{
+  width: 45%;
 }
 
 /* Option fonts
@@ -307,6 +338,13 @@ CURSIVE - font-family: 'Sacramento', cursive;
   cursor: pointer;
   padding-left: 7px;
   margin-top: 6px;
+}
+
+.icon7{
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 25px;
 }
 
 #longer{

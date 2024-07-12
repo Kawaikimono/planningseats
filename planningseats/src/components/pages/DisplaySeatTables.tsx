@@ -116,6 +116,7 @@ const DisplaySeatTables: React.FC<Props> = ({
   }
 
   const onDragEnd = (result: DropResult) => {
+    document.documentElement.removeAttribute("style");
     const { source, destination } = result;
     if (!destination) return;
     if (
@@ -170,8 +171,9 @@ const DisplaySeatTables: React.FC<Props> = ({
         setName={setName}
         setNamesList={setTableNameMap}
       />
-      <DragDropContext onDragEnd={onDragEnd}>
-        <div className="container">
+      <DragDropContext onDragStart={()=>{document.documentElement.setAttribute("style", "scroll-behavior: auto");
+}} onDragEnd={onDragEnd}>
+        <div className="container phone">
           <StrictModeDroppable droppableId="0">
             {(provided, snapshot) => (
               <div

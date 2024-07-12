@@ -1,20 +1,43 @@
 import { useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Welcome = () => {
-
   const redirect = useNavigate();
 
-    const handleNewEvent = () => {
-        fetch('/api/events', {method:"POST"}).then((data)=>{
-            return data.json()
-        }).then((data)=>{
-          return redirect(`/seatplanning/${data.event_id}`)
-        })
-    }
+  const handleNewEvent = () => {
+    fetch("/api/events", { method: "POST" })
+      .then((data) => {
+        if (data.status >= 500) {
+          setErrorMsg(`I'm really sorry, something went wrong`);
+          throw {};
+        }
+        return data.json();
+      })
+      .then((data) => {
+        return redirect(`/seatplanning/${data.event_id}`);
+      })
+      .catch(() => {});
+  };
 
-    let [event, setEvent] = useState("")
-    
+  let [event, setEvent] = useState("");
+  let [errMsg, setErrorMsg] = useState("");
+
+  const findEvent = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!Number.isFinite(+event)) {
+      setErrorMsg("Must provide a numeric Event ID");
+      return;
+    }
+    fetch(`/api/events/${event}`).then((resp) => {
+      if (resp.status == 404) {
+        setErrorMsg(`No event found with id: ${event}`);
+      } else if (resp.status >= 500) {
+        setErrorMsg(`I'm really sorry, something went wrong`);
+      } else {
+        return redirect(`/${event}`);
+      }
+    });
+  };
 
   return (
     <div className="centerWelcome center">
@@ -26,13 +49,31 @@ const Welcome = () => {
       <br />
       <div className="boxWelcome">
         <h4>
-          If you already have a seatting chart, please enter your event id
-          here:
+          If you already have a seatting chart, please enter your event id here:
         </h4>
-        <br />
-        <form action={`/${event}`}>
-        <input type="text" name="eventId" onChange={(e) => setEvent(e.target.value)}></input>
-        <button className="btnWelcome btns" type="submit">Find my Event</button>
+
+        {errMsg != "" ? (
+          <>
+            <br />
+            <p className="error">{errMsg}</p>
+            <br />
+          </>
+        ) : (
+          <></>
+        )}
+
+        <form onSubmit={findEvent}>
+          <br />
+          <input
+            type="text"
+            name="eventId"
+            onChange={(e) => {
+              setEvent(e.target.value)
+            }}
+          ></input>
+          <button className="btnWelcome btns" type="submit">
+            Find my Event
+          </button>
         </form>
         <br />
         <br />
@@ -43,9 +84,10 @@ const Welcome = () => {
           names ready!
         </h4>
         <br />
-          <button className="btns" onClick={handleNewEvent}>Start Planning!</button>
-        <Link to="/seatplanning">
-        </Link>
+        <button className="btns" onClick={handleNewEvent}>
+          Start Planning!
+        </button>
+        <Link to="/seatplanning"></Link>
       </div>
     </div>
   );

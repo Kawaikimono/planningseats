@@ -90,20 +90,20 @@ const LinkInfo = () => {
             event && event.isTitle ? (
               <form onSubmit={handleTitle}>
                 <br/>
-              <input onChange={(e)=>{event!.title = e.target.value; setEvent(structuredClone(event))}} value={event!.title}  ></input><GoCheckCircle className="icon" onClick={(e)=>handleTitle(e as React.FormEvent)}/>
+              <input className="singleNameCardText width3" onChange={(e)=>{event!.title = e.target.value; setEvent(structuredClone(event))}} value={event!.title}  ></input><GoCheckCircle className="icon7" onClick={(e)=>handleTitle(e as React.FormEvent)}/>
               </form>
               ) : (
-              <span onClick={()=>{handleToggle(true)}}><h2 className="spaceabove" >{
+              <span onClick={()=>{handleToggle(true)}}><h2 className="spaceabove fancy2" > {
                 event ? event.title ? (event?.title) : (<>Name Your Event</>) : (<>.</>)
-              }</h2></span>)
+              }<Tooltip anchorSelect=".fancy2" place="right">Edit Title</Tooltip></h2></span>)
           }
             <div className="boxSeatTables2" id= "noted">
           {
                 event && event.isNote ? (
                   <form onSubmit={handleNote}>
-                    <input onChange={(e) => {event!.note = e.target.value; setEvent(structuredClone(event))}} value={event!.note}></input>  <span className="icon3"><GoCheckCircle onClick={(e)=>handleNote(e as React.FormEvent)} /></span>
+                    <input className="singleNameCardText width" onChange={(e) => {event!.note = e.target.value; setEvent(structuredClone(event))}} value={event!.note}></input>  <span className="icon"><GoCheckCircle onClick={(e)=>handleNote(e as React.FormEvent)} /></span>
                   </form> ) : (
-                  <h5>{event?.note} <span className="icon6 hide"><GoPencil onClick={()=>handleToggle(false)} /></span><span className="icon6 hide"><GoTrash onClick={handleGarbage}/></span></h5>)
+                  <h4>{event?.note} <span className="icon6 hide"><GoPencil onClick={()=>handleToggle(false)} /></span><span className="icon6 hide"><GoTrash onClick={handleGarbage}/></span></h4>)
           }
               
         </div>

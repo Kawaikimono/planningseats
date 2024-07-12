@@ -23,7 +23,7 @@ const DisplayNameCards = ({ index, name, names, table_number, setNames, event_id
     }).then((_)=>{
         let oldNames = names
         oldNames[table_number] = oldNames[table_number].filter((name) => name.id !== id)
-        setNames(oldNames);
+        setNames([...oldNames]);
     })
     };
 
@@ -45,6 +45,7 @@ const submitForm = (e: React.MouseEvent, id: number)=> {
     }).then((_)=>{
         let oldNames = names
         oldNames[table_number] = oldNames[table_number].map((name) => (name.id === id ? { ...name, name: editName } : name))
+        oldNames[table_number] = [...oldNames[table_number]]
         setNames(
           [...oldNames]
         );
@@ -73,12 +74,12 @@ const submitForm = (e: React.MouseEvent, id: number)=> {
         >
           {edit ? (
             <>
-            <input
+            <input className="singleNameCardText"
               ref={inputRef}
               value={editName}
               onChange={(e) => setEditName(e.target.value)}
             />
-            <GoCheckCircle className='icon' onClick={(e)=>{submitForm(e, name.id);}}/>
+            <GoCheckCircle className='icon7' onClick={(e)=>{submitForm(e, name.id);}}/>
             </>
           ) : (
             <><span className="singleNameCardText">{name.name}</span>

@@ -12,7 +12,7 @@ interface Props {
     event_id:number
   }
 
-const DisplayTable: React.FC<Props> = ({table, table_number, tableNameMap, setTableNameMap, event_id}:Props ) => {
+const DisplayTable: React.FC<Props> = ({table, tableNameMap, setTableNameMap, event_id}:Props ) => {
     let [note, setNote] = useState(table.note);
     let [isEdit, setIsEdit]= useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -61,11 +61,12 @@ const DisplayTable: React.FC<Props> = ({table, table_number, tableNameMap, setTa
         <form
           onSubmit={(e)=>{noteEdit(e, table.id)}}>
             {isEdit ? (
-            <span className='tablenote'><input
+            <span className='tablenote singleNameCardText'><input
+              id='width'
               ref={inputRef}
               value={note}
               onChange={(e) => setNote(e.target.value)}
-            /> <GoCheckCircle className='icon' onClick={(e)=>{submitForm(e, table.id);}}/></span>
+            /> <GoCheckCircle className='icon7' onClick={(e)=>{submitForm(e, table.id);}}/></span>
           ) : (
                 <h5 className="tablenote">
                     {note}{" "}
@@ -92,7 +93,7 @@ const DisplayTable: React.FC<Props> = ({table, table_number, tableNameMap, setTa
             index={index}
             name={guest}
             key={guest.id}
-            table_number={table_number}
+            table_number={table.table_number}
             names={tableNameMap}
             setNames={setTableNameMap}
           />
