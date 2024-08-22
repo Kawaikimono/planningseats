@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SeatingChart from "./components/pages/SeatingChart";
 import Welcome from "./components/pages/Welcome";
 import DisplaySeatTables from "./components/pages/DisplaySeatTables";
-import LinkInfo from "./components/pages/LinkInfo";
 import 'react-tooltip/dist/react-tooltip.css'
 import { SiLinkedin, SiGithub } from "react-icons/si";
 
