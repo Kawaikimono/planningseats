@@ -5,6 +5,8 @@ import Welcome from "./components/pages/Welcome";
 import DisplaySeatTables from "./components/pages/DisplaySeatTables";
 import LinkInfo from "./components/pages/LinkInfo";
 import 'react-tooltip/dist/react-tooltip.css'
+import { SiLinkedin, SiGithub } from "react-icons/si";
+
 
 const App: React.FC = () => {
 
@@ -19,15 +21,12 @@ const App: React.FC = () => {
           <Route
             path="/:id"
             element={
-              <>
-                <LinkInfo/>
-                <DisplaySeatTables
-                />
-              </>
+                <DisplaySeatTables/>
             }
           />
         </Routes>
       </main>
+      <div id="footer"><h5>Courtesy of Alysia Geiger</h5><a className="link" href="https://www.linkedin.com/in/alysiageiger/" target="blank"><SiLinkedin /></a> <a className="link" href="https://github.com/Kawaikimono" target="blank"><SiGithub/></a></div>
     </BrowserRouter>
   );
 };

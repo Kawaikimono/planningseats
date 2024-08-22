@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Name, Table } from "../../model";
 import DisplayNameCards from "./DisplayNameCards";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { StrictModeDroppable } from "../properties/StrictModeDroppable";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { GoTrash, GoPlusCircle } from "react-icons/go";
 import SeatTables from "./SeatTables";
+import LinkInfo from "./LinkInfo";
 import { Tooltip } from 'react-tooltip'
 import DisplayTable from "./DisplayTable";
 
@@ -14,6 +15,7 @@ interface Props {
 
 const DisplaySeatTables: React.FC<Props> = ({
 }: Props) => {
+  const redirect = useNavigate();
   let [tableList, setTableList] = useState<Table[]>([]);
   let [tableNameMap, setTableNameMap] = useState<Name[][]>([]);
   let [tableReverseLookup, setTableReverseLookup] = useState(
@@ -26,6 +28,12 @@ const DisplaySeatTables: React.FC<Props> = ({
     let fetchedTablesList: Table[] = [];
     let fetchedTableNameMap: Name[][] = [];
     let fetchedTableReverseLookup = new Map<number, number>();
+
+    fetch(`/api/events/${id}`)
+    .then((data) => {
+      if (data.status == 404) {
+        return redirect(`/`)
+      }
     
     fetch(`/api/events/${id}/tables`)
     .then((data) => {
@@ -74,6 +82,8 @@ const DisplaySeatTables: React.FC<Props> = ({
             setTableNameMap(fetchedTableNameMap);
           });
     });
+
+  })
 
   }, []);
 
@@ -164,6 +174,7 @@ const DisplaySeatTables: React.FC<Props> = ({
   };
   return (
     <>
+     <LinkInfo/>
       {" "}
       <SeatTables
         name={name}

@@ -8,8 +8,26 @@ import { Event } from "../../model";
 
 const LinkInfo = () => {
 
+  function unsecuredCopyToClipboard(text:string) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand('copy');
+    } catch (err) {
+      console.error('Unable to copy to clipboard', err);
+    }
+    document.body.removeChild(textArea);
+  }
+
     async function copyThat():Promise<void> {
-      await navigator.clipboard.writeText(location.href);
+     if (navigator.clipboard) 
+     {await navigator.clipboard.writeText(location.href);}
+     else {
+      unsecuredCopyToClipboard(location.href);
+     }
   }
 
   const {id} = useParams();

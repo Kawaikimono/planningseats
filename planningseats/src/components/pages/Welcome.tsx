@@ -25,12 +25,13 @@ const Welcome = () => {
   const findEvent = (e: React.FormEvent) => {
     e.preventDefault();
     if (!Number.isFinite(+event)) {
-      setErrorMsg("Must provide a numeric Event ID");
+      setErrorMsg("Please provide a numeric Event ID");
       return;
     }
+
     fetch(`/api/events/${event}`).then((resp) => {
       if (resp.status == 404) {
-        setErrorMsg(`No event found with id: ${event}`);
+        setErrorMsg(`We have no record for event id ${event}`);
       } else if (resp.status >= 500) {
         setErrorMsg(`I'm really sorry, something went wrong`);
       } else {
@@ -46,7 +47,6 @@ const Welcome = () => {
         Thank you for using Planning Seats for all your event planning needs!
       </h2>
       <br />
-      <br />
       <div className="boxWelcome">
         <h4>
           If you already have a seatting chart, please enter your event id here:
@@ -55,8 +55,7 @@ const Welcome = () => {
         {errMsg != "" ? (
           <>
             <br />
-            <p className="error">{errMsg}</p>
-            <br />
+            <p className="errorpretty">Apologies...<span className="error">{errMsg}</span></p>
           </>
         ) : (
           <></>
