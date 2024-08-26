@@ -12,8 +12,8 @@ const SeatingChart = () => {
       setErrorMsg("Please provide a numeric number of tables");
       return
     }
-    else if (Number.isFinite(+numTables)){
-      setErrorMsg("Please make sure your input is a positive whole number");
+    else if (!Number.isFinite(+numTables) || numTables <= 0){
+      setErrorMsg("Please make sure your input is a positive whole");
       return
     }
     fetch(`/api/events/${id}/tables`, {
