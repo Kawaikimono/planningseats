@@ -3,6 +3,7 @@ import { Name } from "../../model";
 import { Draggable } from "react-beautiful-dnd";
 import { GoTrash, GoPencil, GoCheckCircle } from "react-icons/go";
 
+
 interface Props {
   index: number;
   name: Name;
